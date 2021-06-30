@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+// import { useAuth } from '../contexts/AuthContext'
 
 const Footer = () => {
 
@@ -94,7 +94,7 @@ const Footer = () => {
                 <div className="col-lg-12">
                     <div className="ms_copyright">
                         <div className="footer_border"></div>
-                        <p>Copyright &copy; 2018 <Link to="/" href="/">The Miraculous Music Template</Link>. All Rights Reserved.</p>
+                        {/* <p>Copyright &copy; 2018 <Link to="/" href="/">The Miraculous Music Template</Link>. All Rights Reserved.</p> */}
                     </div>
                 </div>
             </div>

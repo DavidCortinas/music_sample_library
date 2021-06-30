@@ -2,8 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { DataContext } from '../contexts/DataProvider';
-import firebase from 'firebase';
-import $ from 'jquery';
+// import firebase from 'firebase';
+// import $ from 'jquery';
 
 const Header = (props) => {
     // const [currentTime, setCurrentTime] = useState(0);
@@ -23,7 +23,6 @@ const Header = (props) => {
         setCart({ items: {}, quantity: 0, tax: 0, subtotal: 0, grandtotal: 0 })
     }
 
-
     const handleLogout = () => {
         props.signOut();
     }
@@ -31,6 +30,8 @@ const Header = (props) => {
     const checkAuth = () => {
         console.log(currentUser)
     }
+
+    // console.log("H-CU", currentUser)
 
     return (
         <div>

@@ -18,9 +18,10 @@ const Account = (props) => {
     const db = firebase.database();
     const { productList } = useContext(DataContext);
     const [products] = productList;
-
+    console.log(products)
     const addToCart = (eventObj, productObj) => {
         let newCart;
+        console.log("adding", productObj)
         if (!cart.hasOwnProperty('items')) {
             newCart = { ...cart, items: {} }
         }
@@ -47,13 +48,13 @@ const Account = (props) => {
         newCart.subtotal += newCart.items[productObj.name].info.price;
         newCart.tax += newCart.items[productObj.name].info.tax;
         newCart.grandtotal = newCart.subtotal + newCart.tax;
-
-
+        console.log(newCart)
         // update cart in database
         let cartListRef = db.ref(`cart/${currentUser.user.id}`);
         var newCartItem = {
             ...newCart,
         }
+        console.log(newCartItem)
         cartListRef.set(newCartItem);
 
         // set cart from database
@@ -63,9 +64,8 @@ const Account = (props) => {
         // .orderByChild(`items/${productObj.name}`)
         db.ref(`cart/${currentUser.user.id}`).on('value', snapshot => {
             setCart({ ...snapshot.val() });
-
         props.history.push('/cart')
-
+        console.log("added")
         })
     };
 
@@ -104,9 +104,9 @@ const Account = (props) => {
                                 <li>Download 15 Tracks Per Month</li>
                                 <li>Only $11.99 Per Month</li>
                             </ul>
-                            <div className="ms_plan_btn">
+                            <div>
                                 <span>{products.map(p => <Product addToCart={addToCart} key={p.id} p={p} />)}</span>
-                                {/* <Link to='/account' onClick={(e, p) => handleSubscription(e, p)} className="ms_btn"><span>Gain Access</span></Link> */}
+                                {/* <Link to='/account' onClick={(e, p) => addToCart(e, p)} className="ms_btn"><span>Gain Access</span></Link> */}
                                 {/* <Link to='/account' onClick={(e) => props.handleSubscription(e, p)} action="http://127.0.0.1:5000/api/product/1" method="GET" className="ms_btn"><span>Gain Access</span></Link> */}
                             </div>
                         </div>
@@ -148,7 +148,7 @@ const Account = (props) => {
                                 <li>Expand Your Listener Base</li>
                                 <li>Sign Up For Free</li>
                             </ul>
-                            <div className="ms_plan_btn">
+                            <div>
                                 <span>{products.map(p => <Register joinAsMusician={joinAsMusician} />)}</span>
                                 {/* <Link to="/profile" href="#" className="ms_btn">Get Started</Link> */}
                             </div>

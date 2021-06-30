@@ -3,7 +3,7 @@ import React from 'react'
 export const Register = (props) => {
     const p = props.p;
 
-    // console.log(p)
+    console.log(p)
 
     return (
         <div className="col-4">
@@ -18,7 +18,7 @@ export const Register = (props) => {
                     <img className="card-img-top" src={p.image} alt={p.name} />
                 </div>
                 <div className="card-footer"> */}
-            <button onClick={(e) => props.joinAsMusician(e)} routerLink="/cart" className="ms_btn">Get Started</button>
+            <button onClick={(e) => props.joinAsMusician(e)} routerLink="/profile" className="ms_btn_2">Get Started</button>
             {/* </div>
             </div> */}
         </div>
