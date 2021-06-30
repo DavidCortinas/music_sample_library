@@ -1,4 +1,4 @@
-import { loadStripe } from '@stripe/stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
 import React, { useState, useContext } from 'react'
 import { useAuth } from '../contexts/AuthContext';
 import { DataContext } from '../contexts/DataProvider';

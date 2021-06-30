@@ -18,7 +18,7 @@ export const Product = (props) => {
                     <img className="card-img-top" src={p.image} alt={p.name} />
                 </div>
                 <div className="card-footer"> */}
-            <button onClick={(e) => props.addToCart(e, p)} routerLink="/cart" className="ms_btn">Gain Access</button>
+            <button onClick={(e) => props.addToCart(e, p)} routerLink="/cart" className="ms_btn_2">Gain Access</button>
                 {/* </div>
             </div> */}
         </div>

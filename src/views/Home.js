@@ -1924,7 +1924,7 @@ export const Home = () => {
                                 </div>
                                 <div className="ms_dnt_have">
                                     <span>Dont't have an account ?</span>
-                                    <Link href="javascript:;" className="hideCurrentModel" data-toggle="modal" data-target="#myModal">Register Now</Link>
+                                    <Link to=" " href="javascript:;" className="hideCurrentModel" data-toggle="modal" data-target="#myModal">Register Now</Link>
                                 </div>
                             </div>
                         </div>

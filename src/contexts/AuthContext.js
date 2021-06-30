@@ -15,8 +15,9 @@ export const AuthProvider = ( { children } ) => {
 
     useEffect(() => {
         const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-            // const userCred = firebase.auth()
-            // console.log(userCred)
+            const userCred = firebase.auth()
+            // console.log("AC-UC", userCred)
+            // console.log("AC-U", user)
             if (user) {
                 setCurrentUser(
                     {
@@ -37,6 +38,7 @@ export const AuthProvider = ( { children } ) => {
                 setCurrentUser({ isAuthenticated: false, loggedIn: false });
             }
         });
+        // console.log("AC-CU", currentUser)
         return unsubscribe;
     }, []);
 

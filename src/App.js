@@ -27,7 +27,7 @@ import { DataContext } from './contexts/DataProvider';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 // import CheckoutForm from "./CheckoutForm";
-// import { Products } from './views/Products';
+import { Products } from './views/Products';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_KEY);
 
@@ -45,6 +45,14 @@ const App = () => {
     // console.log(2)
   }
 
+  (function () {
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = '%PUBLIC_URL%/favicon.ico';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  })();
+
   useEffect(() => {
     if (currentUser.loggedIn) {
       db.ref(`cart/${currentUser.user.id}`).once('value', (snapshot) => {
@@ -55,7 +63,7 @@ const App = () => {
       }
       )
     }
-  }, [currentUser, setCart, clearCart])
+  }, [db, currentUser, setCart, clearCart])
 
   // const addToCart = (eventObj, productObj) => {
   //   let newCart;

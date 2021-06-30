@@ -1,10 +1,21 @@
 const express = require('express')
+const path = require('path');
 const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const stripe = require('stripe')('sk_test_51Ip1TgGleQX4qpqGWJDFUrHdvMiQ0rHZ1EKH0jGLfktv8ZBmxfkanEnrUgGEOGZvJohEAWYmIL8b3Jr65L2m3MCL00aeXiM6SV');
-
+const stripe = require('stripe')('sk_test_51Ip1TgGleQX4qpqGWJDFUrHdvMiQ0rHZ1EKH0jGLfktv8ZBmxfkanEnrUgGEOGZvJohEAWYmIL8b3Jr65L2m3MCL00aeXiM6SV')
 const port = 3000
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get("*", (req, res) => {
+    res.send("Hello from the API");
+});
+
+-app.get('/', function (req, res) {
+    +app.get('/*', function (req, res) {
+        res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    })});
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -49,6 +60,6 @@ app.post('/sub', async (req, res) => {
     const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
 
     res.json({'client_secret': client_secret, 'status': status})
-})
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

@@ -6,7 +6,7 @@ export const DataContext = createContext();
 
 export const DataProvider = (props) => {
     const [products, setProducts] = useState([]);
-    const [posts, setPosts] = useState([])
+    // const [posts, setPosts] = useState([])
     const [cart, setCart] = useState({});
     const { currentUser } = useAuth();
 
@@ -17,6 +17,8 @@ export const DataProvider = (props) => {
         setCart(cartReset)
         db.ref(`cart/${currentUser.user.id}`).set(cartReset)
     }
+
+    // console.log("DP-CU", currentUser)
 
     // Get Cart
     useEffect(() => {
@@ -69,7 +71,7 @@ export const DataProvider = (props) => {
         //         setProducts(newProducts);
         //     })
         //     .catch(err => console.log(err))
-    }, []);
+    }, [db]);
 
     // Get Posts
     // const getPosts = () => {
@@ -90,7 +92,7 @@ export const DataProvider = (props) => {
 
     return (
         <DataContext.Provider value={{ cartClear: clearCart, productList: [products, setProducts], cartList: [cart, setCart] }}>
-            { props.children}
+            { props.children }
         </DataContext.Provider>
     )
 }
